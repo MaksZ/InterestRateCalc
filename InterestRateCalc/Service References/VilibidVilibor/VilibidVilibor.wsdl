@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://webservices.lb.lt/VilibidVilibor" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://webservices.lb.lt/VilibidVilibor" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">WebService provides VILIBID (Vilnius Interbank Bid rates) and VILIBOR (Vilnius Interbank Offered Rates).</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://webservices.lb.lt/VilibidVilibor">
+      <s:element name="getVilibRateTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="getVilibRateTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getVilibRateTypesResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLatestVilibRate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RateType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLatestVilibRateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getLatestVilibRateResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVilibRate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RateType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVilibRateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getVilibRateResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVilibRatesByDate_XmlString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVilibRatesByDate_XmlStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getVilibRatesByDate_XmlStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVilibRatesByRateType_XmlString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RateType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DateLow" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DateHigh" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVilibRatesByRateType_XmlStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getVilibRatesByRateType_XmlStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVilibRatesByDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVilibRatesByDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getVilibRatesByDateResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVilibRatesByRateType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RateType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DateLow" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DateHigh" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVilibRatesByRateTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getVilibRatesByRateTypeResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="decimal" type="s:decimal" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getVilibRateTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:getVilibRateTypes" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRateTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:getVilibRateTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLatestVilibRateSoapIn">
+    <wsdl:part name="parameters" element="tns:getLatestVilibRate" />
+  </wsdl:message>
+  <wsdl:message name="getLatestVilibRateSoapOut">
+    <wsdl:part name="parameters" element="tns:getLatestVilibRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRateSoapIn">
+    <wsdl:part name="parameters" element="tns:getVilibRate" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRateSoapOut">
+    <wsdl:part name="parameters" element="tns:getVilibRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDate_XmlStringSoapIn">
+    <wsdl:part name="parameters" element="tns:getVilibRatesByDate_XmlString" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDate_XmlStringSoapOut">
+    <wsdl:part name="parameters" element="tns:getVilibRatesByDate_XmlStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateType_XmlStringSoapIn">
+    <wsdl:part name="parameters" element="tns:getVilibRatesByRateType_XmlString" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateType_XmlStringSoapOut">
+    <wsdl:part name="parameters" element="tns:getVilibRatesByRateType_XmlStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDateSoapIn">
+    <wsdl:part name="parameters" element="tns:getVilibRatesByDate" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDateSoapOut">
+    <wsdl:part name="parameters" element="tns:getVilibRatesByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:getVilibRatesByRateType" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:getVilibRatesByRateTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRateTypesHttpGetIn" />
+  <wsdl:message name="getVilibRateTypesHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="getLatestVilibRateHttpGetIn">
+    <wsdl:part name="RateType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getLatestVilibRateHttpGetOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRateHttpGetIn">
+    <wsdl:part name="RateType" type="s:string" />
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRateHttpGetOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDate_XmlStringHttpGetIn">
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDate_XmlStringHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateType_XmlStringHttpGetIn">
+    <wsdl:part name="RateType" type="s:string" />
+    <wsdl:part name="DateLow" type="s:string" />
+    <wsdl:part name="DateHigh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateType_XmlStringHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDateHttpGetIn">
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDateHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateTypeHttpGetIn">
+    <wsdl:part name="RateType" type="s:string" />
+    <wsdl:part name="DateLow" type="s:string" />
+    <wsdl:part name="DateHigh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateTypeHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRateTypesHttpPostIn" />
+  <wsdl:message name="getVilibRateTypesHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="getLatestVilibRateHttpPostIn">
+    <wsdl:part name="RateType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getLatestVilibRateHttpPostOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRateHttpPostIn">
+    <wsdl:part name="RateType" type="s:string" />
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRateHttpPostOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDate_XmlStringHttpPostIn">
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDate_XmlStringHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateType_XmlStringHttpPostIn">
+    <wsdl:part name="RateType" type="s:string" />
+    <wsdl:part name="DateLow" type="s:string" />
+    <wsdl:part name="DateHigh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateType_XmlStringHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDateHttpPostIn">
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByDateHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateTypeHttpPostIn">
+    <wsdl:part name="RateType" type="s:string" />
+    <wsdl:part name="DateLow" type="s:string" />
+    <wsdl:part name="DateHigh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVilibRatesByRateTypeHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:portType name="VilibidViliborSoap">
+    <wsdl:operation name="getVilibRateTypes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of VILIBID/VILIBOR rate types.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRateTypesSoapIn" />
+      <wsdl:output message="tns:getVilibRateTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLatestVilibRate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the latest VILIBID or VILIBOR.</wsdl:documentation>
+      <wsdl:input message="tns:getLatestVilibRateSoapIn" />
+      <wsdl:output message="tns:getLatestVilibRateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns VILIBID or VILIBOR for the specified date.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRateSoapIn" />
+      <wsdl:output message="tns:getVilibRateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate_XmlString">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a XML formatted string containing VILIBID and VILIBOR rates for the specified date.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByDate_XmlStringSoapIn" />
+      <wsdl:output message="tns:getVilibRatesByDate_XmlStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType_XmlString">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a XML formatted string containing VILIBID or VILIBOR rates that are between specified dates.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByRateType_XmlStringSoapIn" />
+      <wsdl:output message="tns:getVilibRatesByRateType_XmlStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list containing VILIBID and VILIBOR rates for the specified date.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByDateSoapIn" />
+      <wsdl:output message="tns:getVilibRatesByDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list containing VILIBID or VILIBOR rates that are between specified dates.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByRateTypeSoapIn" />
+      <wsdl:output message="tns:getVilibRatesByRateTypeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="VilibidViliborHttpGet">
+    <wsdl:operation name="getVilibRateTypes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of VILIBID/VILIBOR rate types.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRateTypesHttpGetIn" />
+      <wsdl:output message="tns:getVilibRateTypesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLatestVilibRate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the latest VILIBID or VILIBOR.</wsdl:documentation>
+      <wsdl:input message="tns:getLatestVilibRateHttpGetIn" />
+      <wsdl:output message="tns:getLatestVilibRateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns VILIBID or VILIBOR for the specified date.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRateHttpGetIn" />
+      <wsdl:output message="tns:getVilibRateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate_XmlString">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a XML formatted string containing VILIBID and VILIBOR rates for the specified date.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByDate_XmlStringHttpGetIn" />
+      <wsdl:output message="tns:getVilibRatesByDate_XmlStringHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType_XmlString">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a XML formatted string containing VILIBID or VILIBOR rates that are between specified dates.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByRateType_XmlStringHttpGetIn" />
+      <wsdl:output message="tns:getVilibRatesByRateType_XmlStringHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list containing VILIBID and VILIBOR rates for the specified date.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByDateHttpGetIn" />
+      <wsdl:output message="tns:getVilibRatesByDateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list containing VILIBID or VILIBOR rates that are between specified dates.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByRateTypeHttpGetIn" />
+      <wsdl:output message="tns:getVilibRatesByRateTypeHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="VilibidViliborHttpPost">
+    <wsdl:operation name="getVilibRateTypes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of VILIBID/VILIBOR rate types.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRateTypesHttpPostIn" />
+      <wsdl:output message="tns:getVilibRateTypesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLatestVilibRate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the latest VILIBID or VILIBOR.</wsdl:documentation>
+      <wsdl:input message="tns:getLatestVilibRateHttpPostIn" />
+      <wsdl:output message="tns:getLatestVilibRateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns VILIBID or VILIBOR for the specified date.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRateHttpPostIn" />
+      <wsdl:output message="tns:getVilibRateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate_XmlString">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a XML formatted string containing VILIBID and VILIBOR rates for the specified date.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByDate_XmlStringHttpPostIn" />
+      <wsdl:output message="tns:getVilibRatesByDate_XmlStringHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType_XmlString">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a XML formatted string containing VILIBID or VILIBOR rates that are between specified dates.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByRateType_XmlStringHttpPostIn" />
+      <wsdl:output message="tns:getVilibRatesByRateType_XmlStringHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list containing VILIBID and VILIBOR rates for the specified date.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByDateHttpPostIn" />
+      <wsdl:output message="tns:getVilibRatesByDateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list containing VILIBID or VILIBOR rates that are between specified dates.</wsdl:documentation>
+      <wsdl:input message="tns:getVilibRatesByRateTypeHttpPostIn" />
+      <wsdl:output message="tns:getVilibRatesByRateTypeHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VilibidViliborSoap" type="tns:VilibidViliborSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getVilibRateTypes">
+      <soap:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRateTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLatestVilibRate">
+      <soap:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getLatestVilibRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRate">
+      <soap:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate_XmlString">
+      <soap:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRatesByDate_XmlString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType_XmlString">
+      <soap:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRatesByRateType_XmlString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate">
+      <soap:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRatesByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType">
+      <soap:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRatesByRateType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VilibidViliborSoap12" type="tns:VilibidViliborSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getVilibRateTypes">
+      <soap12:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRateTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLatestVilibRate">
+      <soap12:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getLatestVilibRate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRate">
+      <soap12:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate_XmlString">
+      <soap12:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRatesByDate_XmlString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType_XmlString">
+      <soap12:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRatesByRateType_XmlString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate">
+      <soap12:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRatesByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType">
+      <soap12:operation soapAction="http://webservices.lb.lt/VilibidVilibor/getVilibRatesByRateType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VilibidViliborHttpGet" type="tns:VilibidViliborHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getVilibRateTypes">
+      <http:operation location="/getVilibRateTypes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLatestVilibRate">
+      <http:operation location="/getLatestVilibRate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRate">
+      <http:operation location="/getVilibRate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate_XmlString">
+      <http:operation location="/getVilibRatesByDate_XmlString" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType_XmlString">
+      <http:operation location="/getVilibRatesByRateType_XmlString" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate">
+      <http:operation location="/getVilibRatesByDate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType">
+      <http:operation location="/getVilibRatesByRateType" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VilibidViliborHttpPost" type="tns:VilibidViliborHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getVilibRateTypes">
+      <http:operation location="/getVilibRateTypes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLatestVilibRate">
+      <http:operation location="/getLatestVilibRate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRate">
+      <http:operation location="/getVilibRate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate_XmlString">
+      <http:operation location="/getVilibRatesByDate_XmlString" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType_XmlString">
+      <http:operation location="/getVilibRatesByRateType_XmlString" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByDate">
+      <http:operation location="/getVilibRatesByDate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVilibRatesByRateType">
+      <http:operation location="/getVilibRatesByRateType" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VilibidVilibor">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">WebService provides VILIBID (Vilnius Interbank Bid rates) and VILIBOR (Vilnius Interbank Offered Rates).</wsdl:documentation>
+    <wsdl:port name="VilibidViliborSoap" binding="tns:VilibidViliborSoap">
+      <soap:address location="http://www.lb.lt/webservices/VilibidVilibor/VilibidVilibor.asmx" />
+    </wsdl:port>
+    <wsdl:port name="VilibidViliborSoap12" binding="tns:VilibidViliborSoap12">
+      <soap12:address location="http://www.lb.lt/webservices/VilibidVilibor/VilibidVilibor.asmx" />
+    </wsdl:port>
+    <wsdl:port name="VilibidViliborHttpGet" binding="tns:VilibidViliborHttpGet">
+      <http:address location="http://www.lb.lt/webservices/VilibidVilibor/VilibidVilibor.asmx" />
+    </wsdl:port>
+    <wsdl:port name="VilibidViliborHttpPost" binding="tns:VilibidViliborHttpPost">
+      <http:address location="http://www.lb.lt/webservices/VilibidVilibor/VilibidVilibor.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

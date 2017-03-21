@@ -1,0 +1,59 @@
+﻿@model IEnumerable<InterestRateCalc.Models.SebCustomerAgreement>
+
+@{
+    ViewBag.Title = "Agreements";
+}
+
+<h2>Agreements</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { Id = ViewBag.SelectedCustomer.SelectedValue })
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Customer: @Html.DropDownList("SelectedCustomer", null, htmlAttributes: new { @onchange = "form.submit();" })
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseRateCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Margin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseRateCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Margin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

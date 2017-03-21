@@ -1,0 +1,48 @@
+﻿@model InterestRateCalc.ViewModels.CalculationReport
+    
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2>Changes report</h2>
+
+<div>
+    <h4>Agreement</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Customer / Agreement
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAgreementDescription)
+        </dd>
+
+        <dt>
+            Interest rate for @Html.DisplayFor(model => model.CurrentBaseRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentInterestRate)
+        </dd>
+
+        <dt>
+            Interest rate for @Html.DisplayFor(model => model.NewBaseRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewInterestRate)
+        </dd>
+
+        <dt>
+            Difference
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Difference)
+        </dd>        
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
