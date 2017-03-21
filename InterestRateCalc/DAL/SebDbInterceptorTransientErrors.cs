@@ -11,7 +11,7 @@ using InterestRateCalc.Logging;
 
 namespace InterestRateCalc.DAL
 {
-    public class SchoolInterceptorTransientErrors : DbCommandInterceptor
+    public class SebDbInterceptorTransientErrors : DbCommandInterceptor
     {
         private int _counter = 0;
         private ILogger _logger = new Logger();

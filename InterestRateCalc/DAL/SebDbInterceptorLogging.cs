@@ -11,7 +11,7 @@ using InterestRateCalc.Logging;
 
 namespace InterestRateCalc.DAL
 {
-    public class SchoolInterceptorLogging : DbCommandInterceptor
+    public class SebDbInterceptorLogging : DbCommandInterceptor
     {
         private ILogger _logger = new Logger();
         private readonly Stopwatch _stopwatch = new Stopwatch();

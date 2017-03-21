@@ -7,7 +7,7 @@ using InterestRateCalc.Models;
 
 namespace InterestRateCalc.DAL
 {
-    public class SchoolInitializer : DropCreateDatabaseIfModelChanges<SebContext>
+    public class SebDbInitializer : DropCreateDatabaseIfModelChanges<SebContext>
     {
         protected override void Seed(SebContext context)
         {
