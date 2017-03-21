@@ -94,6 +94,16 @@ namespace InterestRateCalc.Controllers
             return RedirectToAction("Edit", "SebCustomerAgreement", new { Id = id.Value});
         }
 
+        public ActionResult DeleteAgreement(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return RedirectToAction("Delete", "SebCustomerAgreement", new { Id = id.Value });
+        }
+
         // POST: SebCustomer/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
