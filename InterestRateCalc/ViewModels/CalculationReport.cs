@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using InterestRateCalc.Models;
-using System.Threading.Tasks;
-using InterestRateCalc.VilibidVilibor;
 
 namespace InterestRateCalc.ViewModels
 {
@@ -15,26 +12,6 @@ namespace InterestRateCalc.ViewModels
         public decimal CurrentInterestRate { get; set; }
         public string NewBaseRate { get; set; }
         public decimal NewInterestRate { get; set; }
-
-        public decimal Difference => CurrentInterestRate - NewInterestRate;
-
-        public async Task<bool> Calculate(decimal margin)
-        {
-            VilibidViliborSoap svc = null;
-
-            try
-            {
-                svc = new VilibidViliborSoapClient("VilibidViliborSoap");
-
-                CurrentInterestRate = margin + await svc.getLatestVilibRateAsync(CurrentBaseRate);
-                NewInterestRate = margin + await svc.getLatestVilibRateAsync(NewBaseRate);
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        public decimal Difference { get; set; }
     }
 }

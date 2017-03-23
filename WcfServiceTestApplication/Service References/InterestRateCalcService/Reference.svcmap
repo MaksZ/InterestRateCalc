@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3bdaf76c-6c4e-4007-b0a0-f055aeed9471" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://maksimz-001-site1.gtempurl.com/service.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="e2ca5031-b484-4504-9a06-1a68cc665979" SourceId="1" SourceUrl="http://maksimz-001-site1.gtempurl.com/service.svc?xsd=xsd0" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="59e3fdc6-ddf6-4bc9-ae6e-31f22e741c6e" SourceId="1" SourceUrl="http://maksimz-001-site1.gtempurl.com/service.svc?xsd=xsd2" />
+    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="7050cd91-f389-46b3-9903-a516bbd9537b" SourceId="1" SourceUrl="http://maksimz-001-site1.gtempurl.com/service.svc?xsd=xsd1" />
+    <MetadataFile FileName="InterestRateCalcService.wsdl" MetadataType="Wsdl" ID="44891fb9-ca61-486f-bfe6-365de378a44a" SourceId="1" SourceUrl="http://maksimz-001-site1.gtempurl.com/service.svc?wsdl" />
+    <MetadataFile FileName="service.disco" MetadataType="Disco" ID="7dd588a7-20da-46bc-9ca5-48ec9c48c3a4" SourceId="1" SourceUrl="http://maksimz-001-site1.gtempurl.com/service.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

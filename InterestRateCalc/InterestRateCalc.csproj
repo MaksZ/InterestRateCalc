@@ -127,6 +127,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BLL\CalculationReport.cs" />
+    <Compile Include="BLL\InterestRateCalculator.cs" />
+    <Compile Include="BLL\ViliborSource.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SebCustomerAgreementController.cs" />
     <Compile Include="Controllers\SebCustomerController.cs" />

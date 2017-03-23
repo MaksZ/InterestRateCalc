@@ -121,34 +121,29 @@ namespace InterestRateCalc.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var agreement = db.Agreements.Include(x => x.Customer).First(x => x.Id == id);
-            var a = agreement;
-            var c = a.Customer;
 
-            var report = new ViewModels.CalculationReport
+            try
             {
-                CustomerAgreementDescription = $"{c.FirstName} {c.LastName} / {a.Amount} / {a.Margin} / {a.Duration}",
-                CurrentBaseRate = a.BaseRateCode
-            };
+                var oldBaseRateCode = agreement.BaseRateCode;
 
-            if (TryUpdateModel(agreement, "", new string[] { "BaseRateCode" }))
-            {
-                try
+                if (TryUpdateModel(agreement, "", new string[] { "BaseRateCode" }))
                 {
                     await db.SaveChangesAsync();
 
-                    report.NewBaseRate = agreement.BaseRateCode;
-                    var result = await report.Calculate((decimal)agreement.Margin);
+                    var report = await BLL.CalculationReport.Build(agreement, oldBaseRateCode);
 
-                    if (!result) return new HttpStatusCodeResult(HttpStatusCode.Conflict);
-
-                    return View("Report", report);
+                    return View("Report", ToViewModel(report));
                 }
-                catch (RetryLimitExceededException /* dex */)
-                {
-                    //Log the error (uncomment dex variable name and add a line here to write a log.
-                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-                }
+            }
+            catch (RetryLimitExceededException /* dex */)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Something totally went wrong. Try again, and if the problem persists, see your system administrator.");
             }
 
             ViewBag.SelectedCustomer = agreement.Customer.Id;
@@ -202,5 +197,17 @@ namespace InterestRateCalc.Controllers
             }
             base.Dispose(disposing);
         }
+
+        private static ViewModels.CalculationReport ToViewModel(BLL.CalculationReport report)
+            =>
+            new ViewModels.CalculationReport
+            {
+                CustomerAgreementDescription = report.CustomerAgreementDescription,
+                CurrentBaseRate = report.CurrentBaseRateCode,
+                CurrentInterestRate = report.CurrentInterestRate,
+                NewBaseRate = report.NewBaseRateCode,
+                NewInterestRate = report.NewInterestRate,
+                Difference = report.Difference
+            };
     }
 }
