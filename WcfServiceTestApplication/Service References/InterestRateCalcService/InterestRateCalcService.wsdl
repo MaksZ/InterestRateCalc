@@ -4,30 +4,74 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://maksimz-001-site1.gtempurl.com/service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://maksimz-001-site1.gtempurl.com/service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://maksimz-001-site1.gtempurl.com/service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfService" />
+      <xsd:import schemaLocation="http://maksimz-001-site1.gtempurl.com/service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/InterestRateCalcService" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IInterestRateCalcService_ItWorks_InputMessage">
-    <wsdl:part name="parameters" element="tns:ItWorks" />
+  <wsdl:message name="IInterestRateCalcService_GetCustomers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomers" />
   </wsdl:message>
-  <wsdl:message name="IInterestRateCalcService_ItWorks_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ItWorksResponse" />
+  <wsdl:message name="IInterestRateCalcService_GetCustomers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomersResponse" />
   </wsdl:message>
-  <wsdl:message name="IInterestRateCalcService_GetCustomer_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCustomer" />
+  <wsdl:message name="IInterestRateCalcService_GetAgreements_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreements" />
   </wsdl:message>
-  <wsdl:message name="IInterestRateCalcService_GetCustomer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCustomerResponse" />
+  <wsdl:message name="IInterestRateCalcService_GetAgreements_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgreementsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInterestRateCalcService_UpdateAgreement_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAgreement" />
+  </wsdl:message>
+  <wsdl:message name="IInterestRateCalcService_UpdateAgreement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAgreementResponse" />
   </wsdl:message>
   <wsdl:portType name="IInterestRateCalcService">
-    <wsdl:operation name="ItWorks">
-      <wsdl:input wsaw:Action="http://tempuri.org/IInterestRateCalcService/ItWorks" message="tns:IInterestRateCalcService_ItWorks_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IInterestRateCalcService/ItWorksResponse" message="tns:IInterestRateCalcService_ItWorks_OutputMessage" />
+    <wsdl:operation name="GetCustomers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterestRateCalcService/GetCustomers" message="tns:IInterestRateCalcService_GetCustomers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterestRateCalcService/GetCustomersResponse" message="tns:IInterestRateCalcService_GetCustomers_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetCustomer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IInterestRateCalcService/GetCustomer" message="tns:IInterestRateCalcService_GetCustomer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IInterestRateCalcService/GetCustomerResponse" message="tns:IInterestRateCalcService_GetCustomer_OutputMessage" />
+    <wsdl:operation name="GetAgreements">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterestRateCalcService/GetAgreements" message="tns:IInterestRateCalcService_GetAgreements_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterestRateCalcService/GetAgreementsResponse" message="tns:IInterestRateCalcService_GetAgreements_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAgreement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInterestRateCalcService/UpdateAgreement" message="tns:IInterestRateCalcService_UpdateAgreement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInterestRateCalcService/UpdateAgreementResponse" message="tns:IInterestRateCalcService_UpdateAgreement_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:service name="InterestRateCalcService" />
+  <wsdl:binding name="BasicHttpBinding_IInterestRateCalcService" type="tns:IInterestRateCalcService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCustomers">
+      <soap:operation soapAction="http://tempuri.org/IInterestRateCalcService/GetCustomers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreements">
+      <soap:operation soapAction="http://tempuri.org/IInterestRateCalcService/GetAgreements" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAgreement">
+      <soap:operation soapAction="http://tempuri.org/IInterestRateCalcService/UpdateAgreement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InterestRateCalcService">
+    <wsdl:port name="BasicHttpBinding_IInterestRateCalcService" binding="tns:BasicHttpBinding_IInterestRateCalcService">
+      <soap:address location="http://maksimz-001-site1.gtempurl.com/service.svc" />
+    </wsdl:port>
+  </wsdl:service>
 </wsdl:definitions>

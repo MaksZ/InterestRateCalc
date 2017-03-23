@@ -65,7 +65,13 @@
     <None Include="Service References\InterestRateCalcService\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\InterestRateCalcService\WcfServiceTestApplication.InterestRateCalcService.SebCustomer.datasource">
+    <None Include="Service References\InterestRateCalcService\WcfServiceTestApplication.InterestRateCalcService.Agreement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\InterestRateCalcService\WcfServiceTestApplication.InterestRateCalcService.Customer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\InterestRateCalcService\WcfServiceTestApplication.InterestRateCalcService.UpdateReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>

@@ -15,15 +15,18 @@ namespace WcfServiceTestApplication.InterestRateCalcService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SebCustomer", Namespace="http://schemas.datacontract.org/2004/07/WcfService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Customer", Namespace="http://schemas.datacontract.org/2004/07/InterestRateCalcService")]
     [System.SerializableAttribute()]
-    public partial class SebCustomer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Customer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
@@ -50,6 +53,19 @@ namespace WcfServiceTestApplication.InterestRateCalcService {
                 if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
                     this.FirstNameField = value;
                     this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
@@ -90,21 +106,261 @@ namespace WcfServiceTestApplication.InterestRateCalcService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Agreement", Namespace="http://schemas.datacontract.org/2004/07/InterestRateCalcService")]
+    [System.SerializableAttribute()]
+    public partial class Agreement : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BaseRateCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DurationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float MarginField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Amount {
+            get {
+                return this.AmountField;
+            }
+            set {
+                if ((this.AmountField.Equals(value) != true)) {
+                    this.AmountField = value;
+                    this.RaisePropertyChanged("Amount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BaseRateCode {
+            get {
+                return this.BaseRateCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BaseRateCodeField, value) != true)) {
+                    this.BaseRateCodeField = value;
+                    this.RaisePropertyChanged("BaseRateCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Duration {
+            get {
+                return this.DurationField;
+            }
+            set {
+                if ((this.DurationField.Equals(value) != true)) {
+                    this.DurationField = value;
+                    this.RaisePropertyChanged("Duration");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float Margin {
+            get {
+                return this.MarginField;
+            }
+            set {
+                if ((this.MarginField.Equals(value) != true)) {
+                    this.MarginField = value;
+                    this.RaisePropertyChanged("Margin");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateReport", Namespace="http://schemas.datacontract.org/2004/07/InterestRateCalcService")]
+    [System.SerializableAttribute()]
+    public partial class UpdateReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CurrentBaseRateCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal CurrentInterestRateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerAgreementDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal DifferenceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NewBaseRateCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal NewInterestRateField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CurrentBaseRateCode {
+            get {
+                return this.CurrentBaseRateCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CurrentBaseRateCodeField, value) != true)) {
+                    this.CurrentBaseRateCodeField = value;
+                    this.RaisePropertyChanged("CurrentBaseRateCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal CurrentInterestRate {
+            get {
+                return this.CurrentInterestRateField;
+            }
+            set {
+                if ((this.CurrentInterestRateField.Equals(value) != true)) {
+                    this.CurrentInterestRateField = value;
+                    this.RaisePropertyChanged("CurrentInterestRate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerAgreementDescription {
+            get {
+                return this.CustomerAgreementDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerAgreementDescriptionField, value) != true)) {
+                    this.CustomerAgreementDescriptionField = value;
+                    this.RaisePropertyChanged("CustomerAgreementDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Difference {
+            get {
+                return this.DifferenceField;
+            }
+            set {
+                if ((this.DifferenceField.Equals(value) != true)) {
+                    this.DifferenceField = value;
+                    this.RaisePropertyChanged("Difference");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NewBaseRateCode {
+            get {
+                return this.NewBaseRateCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NewBaseRateCodeField, value) != true)) {
+                    this.NewBaseRateCodeField = value;
+                    this.RaisePropertyChanged("NewBaseRateCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal NewInterestRate {
+            get {
+                return this.NewInterestRateField;
+            }
+            set {
+                if ((this.NewInterestRateField.Equals(value) != true)) {
+                    this.NewInterestRateField = value;
+                    this.RaisePropertyChanged("NewInterestRate");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="InterestRateCalcService.IInterestRateCalcService")]
     public interface IInterestRateCalcService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterestRateCalcService/ItWorks", ReplyAction="http://tempuri.org/IInterestRateCalcService/ItWorksResponse")]
-        string ItWorks(int a);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterestRateCalcService/GetCustomers", ReplyAction="http://tempuri.org/IInterestRateCalcService/GetCustomersResponse")]
+        WcfServiceTestApplication.InterestRateCalcService.Customer[] GetCustomers();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterestRateCalcService/ItWorks", ReplyAction="http://tempuri.org/IInterestRateCalcService/ItWorksResponse")]
-        System.Threading.Tasks.Task<string> ItWorksAsync(int a);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterestRateCalcService/GetCustomers", ReplyAction="http://tempuri.org/IInterestRateCalcService/GetCustomersResponse")]
+        System.Threading.Tasks.Task<WcfServiceTestApplication.InterestRateCalcService.Customer[]> GetCustomersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterestRateCalcService/GetCustomer", ReplyAction="http://tempuri.org/IInterestRateCalcService/GetCustomerResponse")]
-        WcfServiceTestApplication.InterestRateCalcService.SebCustomer GetCustomer(string personalId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterestRateCalcService/GetAgreements", ReplyAction="http://tempuri.org/IInterestRateCalcService/GetAgreementsResponse")]
+        WcfServiceTestApplication.InterestRateCalcService.Agreement[] GetAgreements(int customerId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterestRateCalcService/GetCustomer", ReplyAction="http://tempuri.org/IInterestRateCalcService/GetCustomerResponse")]
-        System.Threading.Tasks.Task<WcfServiceTestApplication.InterestRateCalcService.SebCustomer> GetCustomerAsync(string personalId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterestRateCalcService/GetAgreements", ReplyAction="http://tempuri.org/IInterestRateCalcService/GetAgreementsResponse")]
+        System.Threading.Tasks.Task<WcfServiceTestApplication.InterestRateCalcService.Agreement[]> GetAgreementsAsync(int customerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterestRateCalcService/UpdateAgreement", ReplyAction="http://tempuri.org/IInterestRateCalcService/UpdateAgreementResponse")]
+        WcfServiceTestApplication.InterestRateCalcService.UpdateReport UpdateAgreement(WcfServiceTestApplication.InterestRateCalcService.Agreement agreement);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInterestRateCalcService/UpdateAgreement", ReplyAction="http://tempuri.org/IInterestRateCalcService/UpdateAgreementResponse")]
+        System.Threading.Tasks.Task<WcfServiceTestApplication.InterestRateCalcService.UpdateReport> UpdateAgreementAsync(WcfServiceTestApplication.InterestRateCalcService.Agreement agreement);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -134,20 +390,28 @@ namespace WcfServiceTestApplication.InterestRateCalcService {
                 base(binding, remoteAddress) {
         }
         
-        public string ItWorks(int a) {
-            return base.Channel.ItWorks(a);
+        public WcfServiceTestApplication.InterestRateCalcService.Customer[] GetCustomers() {
+            return base.Channel.GetCustomers();
         }
         
-        public System.Threading.Tasks.Task<string> ItWorksAsync(int a) {
-            return base.Channel.ItWorksAsync(a);
+        public System.Threading.Tasks.Task<WcfServiceTestApplication.InterestRateCalcService.Customer[]> GetCustomersAsync() {
+            return base.Channel.GetCustomersAsync();
         }
         
-        public WcfServiceTestApplication.InterestRateCalcService.SebCustomer GetCustomer(string personalId) {
-            return base.Channel.GetCustomer(personalId);
+        public WcfServiceTestApplication.InterestRateCalcService.Agreement[] GetAgreements(int customerId) {
+            return base.Channel.GetAgreements(customerId);
         }
         
-        public System.Threading.Tasks.Task<WcfServiceTestApplication.InterestRateCalcService.SebCustomer> GetCustomerAsync(string personalId) {
-            return base.Channel.GetCustomerAsync(personalId);
+        public System.Threading.Tasks.Task<WcfServiceTestApplication.InterestRateCalcService.Agreement[]> GetAgreementsAsync(int customerId) {
+            return base.Channel.GetAgreementsAsync(customerId);
+        }
+        
+        public WcfServiceTestApplication.InterestRateCalcService.UpdateReport UpdateAgreement(WcfServiceTestApplication.InterestRateCalcService.Agreement agreement) {
+            return base.Channel.UpdateAgreement(agreement);
+        }
+        
+        public System.Threading.Tasks.Task<WcfServiceTestApplication.InterestRateCalcService.UpdateReport> UpdateAgreementAsync(WcfServiceTestApplication.InterestRateCalcService.Agreement agreement) {
+            return base.Channel.UpdateAgreementAsync(agreement);
         }
     }
 }
